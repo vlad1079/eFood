@@ -1,6 +1,7 @@
 $colorWhite: #ffffff;
 $colorBlack: #363853;
 $colorOrange: #ff7a51;
+$colorBody: #f8f9fd;
 $fontRubic:'Rubik', sans-serif;
 
 @mixin title {
@@ -43,16 +44,6 @@ html:root {
 
 .header {
   padding-top: 3.9375rem;
-  &:before {
-    content: '';
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $colorWhite;
-    z-index: 2;
-  }
 }
 
 .container {
@@ -65,7 +56,6 @@ html:root {
 
 .header_top {
   display: flex;
-  // max-width: 73.1875rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -97,11 +87,6 @@ html:root {
 }
 
 .header_menu {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // height: 100%;
   background-color: #fff;
   z-index: 2;
 }
@@ -176,6 +161,9 @@ html:root {
 
 .food_delivery_buttons {
   font-size: 1.25rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 .food_delivery_buttons_l {
@@ -183,6 +171,16 @@ html:root {
   color: $colorBlack;
   padding: 1rem 1.375rem;
   border-radius: .3125rem;
+  letter-spacing: -0.025rem;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $colorBlack;
+    height: 0.125rem;
+  }
 }
 
 .food_delivery_buttons_l:hover {
@@ -196,6 +194,15 @@ html:root {
   color: $colorBlack;
   padding: 1rem 1.375rem;
   border-radius: .3125rem;
+  letter-spacing: -0.025rem;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $colorBlack;
+    height: 0.125rem;
+  }
 }
 
 .food_delivery_buttons_r:hover {
@@ -1091,9 +1098,22 @@ a {
   }
 }
 
+// media mobile
 @media (max-width:576px){
   body.lock {
     overflow: hidden;
+  }
+
+  .header {
+    padding-top: 1.875rem;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .header_top {
+    padding-left: 1.25rem;
   }
 
   .logo {
@@ -1149,40 +1169,48 @@ a {
     width: 100%;
     height: 100%;
     overflow: auto;
-    transition: all 0.3s ease 0s;
-    background-color: $colorWhite;
-    padding: 70px 10px 20px 10px;
+    transition: top 0.3s ease 0s;
+    background-color: $colorBody;
+    padding: 100px 30px 20px 30px;
 
     &.active {
       top: 0;
+    }
+    &::before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 71.45px;
+      background: $colorBody;
+      z-index: 2;
     }
   }
 
   .nav {
     position: relative;
-    display: block;
+    flex-direction: column;
+    row-gap: 1.875rem;
     padding-top: 1.25rem;
     li {
-      margin: 0 0 20px 0;
       padding-left: .625rem;
+      & > a {
+        font-size: 1.5rem;
+      }
     }
   }
 
-  .header {
-    padding-top: 1.875rem;
-  }
-
-  .container {
-    max-width: 100%;
-  }
-
   .sign_up {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     text-align: center;
     padding: 6.99px 11.63px 6.47px 10.19px;
     margin-right: 0;
+    z-index: 2;
   }
+
+  // main
 
   .main {
   }
@@ -1228,6 +1256,15 @@ a {
   .our_popular_category_nav {
     flex-wrap: wrap;
     padding-top: .625rem;
+    flex-direction: column;
+    row-gap: .625rem;
+    & > li {
+      max-width: 100%;
+      flex: 1 1 auto;
+    & > a {
+      justify-content: center;
+      align-items: center;
+    }   }
   }
 
   .image-slider {

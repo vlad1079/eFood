@@ -25,13 +25,6 @@ html:root {
 .header {
   padding-top: 3.9375rem;
 }
-.header:before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  z-index: 2;
-}
 
 .container {
   max-width: 76.9375rem;
@@ -124,7 +117,7 @@ html:root {
 }
 
 .food_delivery_text_main {
-  font-size: calc(40px + (26 + 26 * 0.7) * ((100vw - 320px) / 1440));
+  font-size: calc(40px + 44.2 * (100vw - 320px) / 1440);
   color: #363853;
   font-weight: 500;
   line-height: 78px;
@@ -134,13 +127,22 @@ html:root {
 }
 
 .food_delivery_text_content {
-  font-size: calc(16px + (4 + 4 * 0.7) * ((100vw - 320px) / 1440));
+  font-size: calc(16px + 6.8 * (100vw - 320px) / 1440);
   line-height: 1.5;
   color: #363853;
 }
 
 .food_delivery_buttons {
   font-size: 1.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .food_delivery_buttons_l {
@@ -148,6 +150,15 @@ html:root {
   color: #363853;
   padding: 1rem 1.375rem;
   border-radius: 0.3125rem;
+  letter-spacing: -0.025rem;
+}
+.food_delivery_buttons_l:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #363853;
+  height: 0.125rem;
 }
 
 .food_delivery_buttons_l:hover {
@@ -161,6 +172,15 @@ html:root {
   color: #363853;
   padding: 1rem 1.375rem;
   border-radius: 0.3125rem;
+  letter-spacing: -0.025rem;
+}
+.food_delivery_buttons_r:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #363853;
+  height: 0.125rem;
 }
 
 .food_delivery_buttons_r:hover {
@@ -1116,11 +1136,18 @@ html:root {
   body.lock {
     overflow: hidden;
   }
-
+  .header {
+    padding-top: 1.875rem;
+  }
+  .container {
+    max-width: 100%;
+  }
+  .header_top {
+    padding-left: 1.25rem;
+  }
   .logo {
     display: none;
   }
-
   .header_top_menu_burger {
     display: block;
     position: relative;
@@ -1168,7 +1195,6 @@ html:root {
     -webkit-transform: scale(0);
             transform: scale(0);
   }
-
   .header_menu {
     position: fixed;
     top: -100%;
@@ -1176,50 +1202,54 @@ html:root {
     width: 100%;
     height: 100%;
     overflow: auto;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    background-color: #ffffff;
-    padding: 70px 10px 20px 10px;
+    -webkit-transition: top 0.3s ease 0s;
+    transition: top 0.3s ease 0s;
+    background-color: #f8f9fd;
+    padding: 100px 30px 20px 30px;
   }
   .header_menu.active {
     top: 0;
   }
-
+  .header_menu::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 71.45px;
+    background: #f8f9fd;
+    z-index: 2;
+  }
   .nav {
     position: relative;
-    display: block;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 1.875rem;
     padding-top: 1.25rem;
   }
   .nav li {
-    margin: 0 0 20px 0;
     padding-left: 0.625rem;
   }
-
-  .header {
-    padding-top: 1.875rem;
+  .nav li > a {
+    font-size: 1.5rem;
   }
-
-  .container {
-    max-width: 100%;
-  }
-
   .sign_up {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     text-align: center;
     padding: 6.99px 11.63px 6.47px 10.19px;
     margin-right: 0;
+    z-index: 2;
   }
-
   .food_delivery_content {
     display: none;
   }
-
   .food_delivery_text {
     width: 100%;
     padding-top: 1.875rem;
   }
-
   .food_delivery_text_main {
     font-size: 24px;
     font-weight: 500;
@@ -1230,7 +1260,6 @@ html:root {
   .food_delivery_text_main br {
     display: none;
   }
-
   .food_delivery_text_content {
     font-size: 18px;
     line-height: 25px;
@@ -1240,17 +1269,14 @@ html:root {
   .food_delivery_text_content br {
     display: none;
   }
-
   .food_delivery_buttons {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-
   .our_popular_category {
     padding-top: 0.625rem;
   }
-
   .our_popular_category_title {
     font-size: 24px;
     font-weight: 500;
@@ -1258,37 +1284,49 @@ html:root {
     text-transform: capitalize;
     text-align: center;
   }
-
   .our_popular_category_nav {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     padding-top: 0.625rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 0.625rem;
   }
-
+  .our_popular_category_nav > li {
+    max-width: 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+  }
+  .our_popular_category_nav > li > a {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
   .image-slider {
     padding-bottom: 0.625rem;
   }
-
   .our_popular_category_slider {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     padding-top: 1.25rem;
   }
-
   .good_food {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     padding-top: 1.25rem;
   }
-
   .good_food_img img {
     max-width: 100%;
   }
-
   .good_food_content {
     padding-top: 0.875rem;
   }
-
   .good_food_content_title {
     font-size: 24px;
     font-weight: 500;
@@ -1297,18 +1335,15 @@ html:root {
     text-align: center;
     padding-bottom: 0.3125rem;
   }
-
   .good_food_content_content {
     font-size: 18px;
     line-height: 25px;
     padding-top: 0.3125rem;
   }
-
   .top_food_main {
     padding-top: 1.25rem;
     padding-bottom: 0.625rem;
   }
-
   .top_food_title {
     font-size: 24px;
     font-weight: 500;
@@ -1316,25 +1351,20 @@ html:root {
     text-transform: capitalize;
     text-align: center;
   }
-
   .top_food {
     padding-top: 1.25rem;
   }
-
   .top_food_card_img {
     max-width: 100%;
   }
-
   .mobile_app {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     padding-top: 0.3125rem;
   }
-
   .mobile_app_content {
     padding-top: 0.3125rem;
   }
-
   .mobile_app_content_title {
     font-size: 24px;
     font-weight: 500;
@@ -1342,28 +1372,23 @@ html:root {
     text-transform: capitalize;
     text-align: center;
   }
-
   .mobile_app_content_content {
     font-size: 18px;
     line-height: 25px;
     padding-top: 0.625rem;
   }
-
   .mobile_app_content_button {
     padding-bottom: 0.625rem;
   }
-
   .mobile_app_img {
     padding-top: 1.75rem;
   }
   .mobile_app_img img {
     max-width: 100%;
   }
-
   .our_client {
     padding-top: 1.25rem;
   }
-
   .our_client_title {
     font-size: 24px;
     font-weight: 500;
@@ -1371,7 +1396,6 @@ html:root {
     text-transform: capitalize;
     text-align: center;
   }
-
   .our_client_content {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -1380,30 +1404,25 @@ html:root {
   .our_client_content img {
     max-width: 100%;
   }
-
   .our_client_sliderr_previous {
     left: 10.9375rem;
   }
-
   .latest_offer {
     max-width: 100%;
     margin-top: 1.25rem;
   }
-
   .latest_offer_title {
     font-size: 24px;
     line-height: 28px;
     text-align: center;
     padding: 3px 9px 7px 7px;
   }
-
   .latest_offer_content {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
     padding-top: 0;
   }
-
   .latest_offer_form {
     max-width: 100%;
     padding: 0 10px 22px 7px;
@@ -1419,16 +1438,13 @@ html:root {
     right: 0;
     background-position: 100px;
   }
-
   .footer {
     padding-top: 1.875rem;
   }
-
   .footer_top {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-
   .footer_bottom {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -1439,7 +1455,6 @@ html:root {
   .footer_bottom p {
     margin: 0 auto;
   }
-
   .footer_bottom_nav {
     padding-top: 1.25rem;
     margin: 0 auto;
